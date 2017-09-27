@@ -8,8 +8,14 @@ class ContactsController < ApplicationController
   end
   
   def create
+
   end
 
   def delete
+  end
+
+  private
+  def permit_params
+    params.permit(:file)
   end
 end
