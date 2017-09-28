@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'contacts#index'
   
   post '/contacts/create' => 'contacts#create'
+  get '/contacts/load' => 'contacts#get_contacts'
 
   resources :contacts, only: [:index, :create, :destroy]
 

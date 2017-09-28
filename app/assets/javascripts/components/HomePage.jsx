@@ -66,6 +66,9 @@ class HomePage extends React.Component {
 
             <button>Upload</button>
           </form>
+
+          <a href="/contacts/load">View Contacts</a>
+          <Contacts />
         </div>
         );
   }

@@ -7,6 +7,11 @@ class ContactsController < BaseController
    	print @contacts
   end
   
+  def get_contacts
+    @contacts = Contact.all
+    render component: 'Contacts', props: { contact: @contacts }
+  end
+
   def create
     puts "Inside create method"
     fileParams = params[:file]
@@ -22,7 +27,6 @@ class ContactsController < BaseController
     contacts = rows.map { |row| Hash[headers.zip(row)] }
     # persist in contact table
     Contact.create(contacts);
-
     redirect_to contacts_path
   end
 
