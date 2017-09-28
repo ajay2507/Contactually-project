@@ -29,8 +29,13 @@ class ContactsController < BaseController
     Contact.create(contacts);
     redirect_to contacts_path
   end
-
+  
+  # Method to delete the contact based on the contact id
   def destroy
+    puts "delete contact"
+    contact = Contact.find(params[:id])
+    contact.destroy
+    render json: contact
   end
 
   private

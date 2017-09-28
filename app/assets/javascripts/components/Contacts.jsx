@@ -1,7 +1,36 @@
 class Contacts extends React.Component {
+
+  constructor(props) {
+        super(props);
+    }
+    
+    // Invoked before the component renders
+    componentWillMount() {
+        this.state = { contacts: this.props.contact };
+    }
+
+    // Method to delete the contacts
+    deleteContact(contact) {
+        console.log(contact);
+        $.ajax({
+            url: '/contacts/' + contact.id,
+            type: 'DELETE',
+            dataType: "json",
+            success: (response) => {
+                const filterContacts = this.state.contacts.filter(contact => contact.id != response.id);
+                this.setState({ contacts: filterContacts });
+            },
+            error: () => {
+                console.log("Error in deleting contacts");
+            }
+        });
+
+
+    }
+
   render() {
 
-  	let contactList = this.props.contact
+  	let contactList = this.state.contacts
     return (
     	<div>
         <table className='table table-striped'>
@@ -21,7 +50,7 @@ class Contacts extends React.Component {
               <td>{contact.email_address}</td>
               <td>{contact.phone_number}</td>
               <td>{contact.company_name}</td>
-              <td></td>
+              <td><button className="btn btn-danger" onClick={this.deleteContact.bind(this,contact)}>Delete</button></td>
             </tr>
           ))}
           </tbody>

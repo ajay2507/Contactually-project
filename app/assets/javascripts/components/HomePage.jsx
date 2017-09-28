@@ -14,14 +14,11 @@ class HomePage extends React.Component {
   
   // fires when file gets uploaded
   changeFile(e){
-  	 console.log("file uploaded");
-  	 console.log(e);
-      let filePath = $('input[type=file]').val();
   	  let reader = new FileReader();
   	  let file = e.currentTarget.files[0];
   	  let that = this;
   	  reader.onloadend = function() {
-        that.setState({ fileURL: reader.result, fileUpload: filePath });
+        that.setState({ fileURL: reader.result, fileUpload: file });
       }
       if(file){
          reader.readAsDataURL(file);
