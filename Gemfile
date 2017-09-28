@@ -11,10 +11,21 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Added for Jquery
+gem 'jquery-rails'
+
+# Added for testing
+gem "rspec"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.6'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'paperclip'
+
+
+gem 'turbolinks'
 
 # Included react-rails
 gem 'react-rails'

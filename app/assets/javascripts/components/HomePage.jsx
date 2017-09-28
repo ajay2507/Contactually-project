@@ -16,11 +16,12 @@ class HomePage extends React.Component {
   changeFile(e){
   	 console.log("file uploaded");
   	 console.log(e);
+      let filePath = $('input[type=file]').val();
   	  let reader = new FileReader();
   	  let file = e.currentTarget.files[0];
   	  let that = this;
   	  reader.onloadend = function() {
-        that.setState({ fileURL: reader.result, fileUpload: file });
+        that.setState({ fileURL: reader.result, fileUpload: filePath });
       }
       if(file){
          reader.readAsDataURL(file);
@@ -29,17 +30,14 @@ class HomePage extends React.Component {
   }
 
   createContacts(formData){
-      $.ajax({
-      url: '/api/posts',
-      type: 'POST',
-      processData: false,
-      contentType: false,
-      dataType: 'json',
-      data: formData,
-      success: function(post) {
-          resetForm();
-      }
-    })
+      console.log(formData);
+      $.ajax({ url: '/contacts/create', 
+        type: 'POST', 
+        data: formData, 
+        success: (response) => { 
+          console.log('it worked!', response); 
+        } });
+
   }
   
   resetForm(){
@@ -51,13 +49,11 @@ class HomePage extends React.Component {
 
   handleSubmit(e){
   	 console.log("submit the form");
-      if(){
-      var formData = new FormData();
-      formData.append("file", this.state.fileURL);
-      createContacts(formData);
+      if(this.state.fileURL != ''){
+      let formData = {"file":this.state.fileURL};
+      this.createContacts(formData);
      }else{
-
-      alert("Please upload the file");
+        alert("Please upload the file");
     }}
 
   render() {
