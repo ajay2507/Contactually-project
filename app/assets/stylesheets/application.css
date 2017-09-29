@@ -13,3 +13,69 @@
  *= require_tree .
  *= require_self
  */
+
+
+@import "bootstrap";
+html, body{
+	height:100%;
+	width:100%;
+}
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+
+	font-family: 'Lato', sans-serif;
+}
+
+h1,h2{
+	font-size: 40px !important;
+}
+
+.margin-top{
+	margin-top:10px !important;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.margin-bottom{
+	margin-bottom: 15px !important;
+}
+
+.margin-left{
+	margin-left: 20px;
+}
+
+/* Stylings for Home page */
+
+.HomePage{
+    height: 100%;
+}
+
+.home{
+    
+    color:white;
+    background-image: url("homepage.png");
+    height: 100%;
+    color: white;
+    background-image: url(homepage.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+
+ }
+
+ .home-wrapper{
+ 	position: absolute;
+ 	top:35%;
+ 	left: 25%;
+ 	text-align: center;
+ }
+
+ .file-upload{
+ 	margin-left: 220px;
+ }
+

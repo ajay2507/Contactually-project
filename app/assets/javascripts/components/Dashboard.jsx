@@ -58,9 +58,10 @@ class Dashboard extends React.Component {
              	<div className="container">
              	 <div className="row">
              	 <div>
-             	    <a className="btn btn-primary" href='/' >Back</a>
-             	 	<button className="btn btn-primary" onClick={() => this.sort('email_address')} >Sort by Email Address</button>
-             	 	<button className="btn btn-primary" onClick={this.filterByCom} >Filter by .com</button>
+             	    <a className="btn btn-primary margin-bottom" href='/' >Back</a>
+             	    <div className="btn-class">
+             	 	<button className="btn btn-primary margin-bottom" onClick={() => this.sort('email_address')} >Sort by Email Address</button>
+             	 	<button className="btn btn-primary margin-left margin-bottom" onClick={this.filterByCom} >Filter by .com</button></div>
              	 	
              	 </div>
              	<Contacts deleteContact={this.deleteContact} contacts={this.state.contacts} />
