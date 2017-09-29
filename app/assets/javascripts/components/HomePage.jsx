@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   }
 
   createContacts(formData){
-      console.log(formData);
+     
       $.ajax({ url: '/contacts/create', 
         type: 'POST', 
         data: formData, 
@@ -45,7 +45,7 @@ class HomePage extends React.Component {
   }
 
   handleSubmit(e){
-  	 console.log("submit the form");
+  	
       if(this.state.fileURL != ''){
       let formData = {"file":this.state.fileURL};
       this.createContacts(formData);
@@ -61,10 +61,10 @@ class HomePage extends React.Component {
 
             <input type="file" onChange={this.changeFile} />
 
-            <button>Upload</button>
+            <button className="btn btn-success">Upload</button>
           </form>
 
-          <a href="/contacts/load">View Contacts</a>
+          <a className="btn btn-success" href="/contacts/load">View Contacts</a>
         </div>
         );
   }
