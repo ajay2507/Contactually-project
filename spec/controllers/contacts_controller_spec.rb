@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# testing contacts controller
+
 describe ContactsController do
 describe 'GET #index' do
     context 'contacts index page' do

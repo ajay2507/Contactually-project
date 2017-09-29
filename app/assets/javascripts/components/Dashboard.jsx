@@ -1,3 +1,4 @@
+/* Dashboard component to populate contacts */
 class Dashboard extends React.Component {
 
  constructor(props) {
@@ -9,14 +10,15 @@ class Dashboard extends React.Component {
         this.deleteContact = this.deleteContact.bind(this);
         this.backFunc = this.backFunc.bind(this);
     }
-
+    
+    // fetch the contacts before component mounts
     componentWillMount() {
     	$.ajax({
             url: '/contacts/load',
             type: 'GET',
             dataType: "json",
             success: (response) => {
-               // const filterContacts = this.state.contacts.filter(contact => contact.id != response.id);
+               
                 this.setState({ contacts: response });
             },
             error: () => {
@@ -27,7 +29,7 @@ class Dashboard extends React.Component {
 
     // Generic sort method, can be sorted based on any keys like(name, email,phone)
     sort(key) {
-
+        //used JavaScript sort method
         const sortedContacts = this.state.contacts.sort((contactA, contactB) => {
             return contactA[key] >= contactB[key] ? 1 : -1;
         });
@@ -47,7 +49,6 @@ class Dashboard extends React.Component {
 
     // Method to delete the contacts
     deleteContact(contact) {
-        console.log(contact);
         $.ajax({
             url: '/contacts/' + contact.id,
             type: 'DELETE',
@@ -63,7 +64,8 @@ class Dashboard extends React.Component {
 
 
     }
-
+    
+    // Function to get back to home page
     backFunc(){
     	window.location.reload();
     }

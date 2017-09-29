@@ -1,3 +1,4 @@
+/* Contacts component to show in table */
 class Contacts extends React.Component {
 
   constructor(props) {

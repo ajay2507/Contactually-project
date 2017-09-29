@@ -7,12 +7,13 @@ class ContactsController < BaseController
    	print @contacts
   end
   
+  # Get all the contacts
   def get_contacts
     @contacts = Contact.all
     render json: @contacts
   end
   
-  
+  # create contacts from csv file
   def create
     puts "Inside create method"
     fileParams = params[:file]
@@ -39,7 +40,8 @@ class ContactsController < BaseController
     contact.destroy
     render json: contact
   end
-
+  
+  # permit restricted parameter
   private
   def permit_params
     params.permit(:file)

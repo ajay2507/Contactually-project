@@ -1,3 +1,4 @@
+/* Home Page component to show the landing page */
 class HomePage extends React.Component {
 
     constructor(props) {
@@ -27,7 +28,8 @@ class HomePage extends React.Component {
         }
 
     }
-
+    
+    // making ajax call to create new contacts
     createContacts(formData) {
 
         $.ajax({
@@ -42,16 +44,17 @@ class HomePage extends React.Component {
         this.setState({ homePage: false })
 
     }
-
+    
     resetForm() {
         this.setState({
             fileURL: '',
             fileUpload: ''
         })
     }
-
+    
+    // on submit of the form
     handleSubmit(e) {
-
+        //check file is uploaded or not
         if (this.state.fileURL != '') {
             let formData = { "file": this.state.fileURL };
             this.createContacts(formData);
@@ -61,7 +64,8 @@ class HomePage extends React.Component {
 
         e.preventDefault();
     }
-
+    
+    //handled routing between components by toggling
     toggleDashboard(){
       this.setState({ homePage: false })
     }
