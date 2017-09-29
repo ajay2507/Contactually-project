@@ -4,6 +4,10 @@ class Contacts extends React.Component {
         super(props);
          this.state = { contacts: this.props.contacts };
     }
+
+  componentWillMount() {
+     this.state = { contacts: this.props.contacts };
+  }
     
   
   render() {

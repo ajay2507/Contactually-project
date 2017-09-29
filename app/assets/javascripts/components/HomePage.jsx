@@ -4,11 +4,13 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
             fileURL: '',
-            fileUpload: ''
+            fileUpload: '',
+            homePage: this.props.homeFlag
         }
         // binding the current object
         this.changeFile = this.changeFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleDashboard = this.toggleDashboard.bind(this);
 
     }
 
@@ -37,6 +39,8 @@ class HomePage extends React.Component {
             }
         });
 
+        this.setState({ homePage: false })
+
     }
 
     resetForm() {
@@ -54,13 +58,19 @@ class HomePage extends React.Component {
         } else {
             alert("Please upload the file");
         }
+
         e.preventDefault();
+    }
+
+    toggleDashboard(){
+      this.setState({ homePage: false })
     }
 
 
   render() {
     return (
-    	 <div className="home-wrapper">
+      <div>
+    	{this.state.homePage && <div className="home-wrapper">
           <h2 className="text-center">Want to build strong relationship?</h2>
           <h2 className="text-center">try <span>Contactually</span></h2>
           <form onSubmit={this.handleSubmit}>
@@ -68,11 +78,12 @@ class HomePage extends React.Component {
             <input type="file" onChange={this.changeFile} />
             </div>
             <button className="btn btn-success margin-top">Upload</button>
-             <a className="margin-top margin-left btn btn-success" href="/contacts/load">View Contacts</a>
+             <a className="margin-top margin-left btn btn-success" onClick={this.toggleDashboard} >View Contacts</a>
           </form>
 
          
-        </div>
+        </div>}
+        {!this.state.homePage && <Dashboard homeFlag={this.state.homePage} /> }</div>
         );
   }
 }

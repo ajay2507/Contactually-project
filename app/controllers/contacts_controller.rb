@@ -9,9 +9,10 @@ class ContactsController < BaseController
   
   def get_contacts
     @contacts = Contact.all
-    render component: 'Dashboard', props: { contact: @contacts }
+    render json: @contacts
   end
-
+  
+  
   def create
     puts "Inside create method"
     fileParams = params[:file]
@@ -28,7 +29,7 @@ class ContactsController < BaseController
     contacts = rows.map { |row| Hash[headers.zip(row)] }
     # persist in contact table
     Contact.create(contacts);
-    redirect_to contacts_load_path
+   # redirect_to contacts_load_path
   end
   
   # Method to delete the contact based on the contact id

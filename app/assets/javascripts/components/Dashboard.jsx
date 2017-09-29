@@ -5,8 +5,24 @@ class Dashboard extends React.Component {
         
         this.sort = this.sort.bind(this);
         this.filterByCom = this.filterByCom.bind(this);
-        this.state = { reset : false , contacts: this.props.contact };
+        this.state = { reset : false , contacts: this.props.contact, homeFlag: this.props.homeFlag };
         this.deleteContact = this.deleteContact.bind(this);
+        this.backFunc = this.backFunc.bind(this);
+    }
+
+    componentWillMount() {
+    	$.ajax({
+            url: '/contacts/load',
+            type: 'GET',
+            dataType: "json",
+            success: (response) => {
+               // const filterContacts = this.state.contacts.filter(contact => contact.id != response.id);
+                this.setState({ contacts: response });
+            },
+            error: () => {
+                console.log("Error in getting contacts");
+            }
+        });
     }
 
     // Generic sort method, can be sorted based on any keys like(name, email,phone)
@@ -21,7 +37,7 @@ class Dashboard extends React.Component {
     // Filter the email address field by .com 
     filterByCom(e) {
     	const contactList = this.state.contacts;
-        const contacts = this.props.contact.filter(contact => {
+        const contacts = this.state.contacts.filter(contact => {
             return contact.email_address.endsWith('.com');
         })
         //console.log(filteredContacts);
@@ -48,23 +64,27 @@ class Dashboard extends React.Component {
 
     }
 
+    backFunc(){
+    	window.location.reload();
+    }
+
 
     render(){
     	
     	return(
              
-             <div>
+             <div className="dashboard">
              	<Header />
              	<div className="container">
              	 <div className="row">
              	 <div>
-             	    <a className="btn btn-primary margin-bottom" href='/' >Back</a>
+             	    <button className="btn btn-primary margin-bottom" onClick={this.backFunc} >Back</button>
              	    <div className="btn-class">
              	 	<button className="btn btn-primary margin-bottom" onClick={() => this.sort('email_address')} >Sort by Email Address</button>
              	 	<button className="btn btn-primary margin-left margin-bottom" onClick={this.filterByCom} >Filter by .com</button></div>
              	 	
              	 </div>
-             	<Contacts deleteContact={this.deleteContact} contacts={this.state.contacts} />
+             	{this.state.contacts != undefined && <Contacts deleteContact={this.deleteContact} contacts={this.state.contacts} />}
              </div>
              </div>
              </div>
