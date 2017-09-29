@@ -1,1 +1,0 @@
-describe ContactsController do

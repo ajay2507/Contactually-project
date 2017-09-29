@@ -17,9 +17,10 @@ class ContactsController < BaseController
     fileParams = params[:file]
     # decode the file
     decoded = Base64.decode64(CGI::unescape(fileParams))
+    print decoded
     # parse the file using CSV
     rows = CSV.parse(decoded)
-    print rows
+    puts rows
     # make headers seperated with _ lowercase(eg: first_name)
     headers = rows.shift.map { | header| header.gsub!(/( )/, '_').downcase! }
     headers[0] = headers[0].gsub!(/[^a-zA-Z_]/, "")[/first...../]
@@ -27,7 +28,7 @@ class ContactsController < BaseController
     contacts = rows.map { |row| Hash[headers.zip(row)] }
     # persist in contact table
     Contact.create(contacts);
-    redirect_to contacts_path
+    redirect_to contacts_load_path
   end
   
   # Method to delete the contact based on the contact id

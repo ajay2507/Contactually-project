@@ -33,6 +33,15 @@ h1,h2{
 	font-size: 40px !important;
 }
 
+a:visited { 
+    color: white;
+}
+
+
+a:hover { 
+    color: white;
+}
+
 .margin-top{
 	margin-top:10px !important;
 }

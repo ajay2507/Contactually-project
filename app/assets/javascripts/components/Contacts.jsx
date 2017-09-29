@@ -13,7 +13,7 @@ class Contacts extends React.Component {
 
     return (
     	<div>
-        <table className='table table-striped'>
+        <table className='table-responsive table table-striped'>
           <tbody>
             <tr>
               <th>First Name</th>

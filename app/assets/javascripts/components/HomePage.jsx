@@ -64,7 +64,7 @@ class HomePage extends React.Component {
           <h2 className="text-center">Want to build strong relationship?</h2>
           <h2 className="text-center">try <span>Contactually</span></h2>
           <form onSubmit={this.handleSubmit}>
-            <div className="file-upload">
+            <div className="file-upload margin-bottom">
             <input type="file" onChange={this.changeFile} />
             </div>
             <button className="btn btn-success margin-top">Upload</button>
