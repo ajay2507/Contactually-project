@@ -6,7 +6,7 @@ class Contacts extends React.Component {
     
     // Invoked before the component renders
     componentWillMount() {
-        this.state = { contacts: this.props.contact };
+        this.state = { contacts: this.props.contacts };
     }
 
     // Method to delete the contacts

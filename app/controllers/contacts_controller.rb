@@ -9,7 +9,7 @@ class ContactsController < BaseController
   
   def get_contacts
     @contacts = Contact.all
-    render component: 'Contacts', props: { contact: @contacts }
+    render component: 'Dashboard', props: { contact: @contacts }
   end
 
   def create
